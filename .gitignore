@@ -1,0 +1,37 @@
+# Build directories
+backend/build/
+build/
+cmake-build-*/
+
+# Compiled binaries
+*.o
+*.obj
+*.exe
+*.out
+*.app
+process_manager
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+install_manifest.txt
+
+# Docker
+.docker/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp

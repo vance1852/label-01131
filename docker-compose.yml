@@ -1,0 +1,15 @@
+services:
+  process-manager:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+        - linux/arm64
+    container_name: process-manager
+    image: process-manager:latest
+    stdin_open: true
+    tty: true
+    working_dir: /app
+    entrypoint: ["process_manager"]
+    restart: "no"
