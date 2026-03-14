@@ -1,5 +1,5 @@
-# 多阶段构建 - 支持 ARM64 和 AMD64
-FROM --platform=$BUILDPLATFORM debian:bookworm-slim AS builder
+# 多阶段构建
+FROM debian:bookworm-slim AS builder
 
 # 安装构建工具
 RUN apt-get update && apt-get install -y \
@@ -19,7 +19,7 @@ RUN mkdir build && cd build && \
     make -j$(nproc)
 
 # 运行时镜像
-FROM --platform=$TARGETPLATFORM debian:bookworm-slim
+FROM debian:bookworm-slim
 
 # 安装运行时依赖和常用命令
 RUN apt-get update && apt-get install -y \
