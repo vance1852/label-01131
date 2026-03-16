@@ -5,6 +5,9 @@
 ### 使用 Docker（推荐）
 
 ```bash
+# 0. 如果构建时遇到 "Multi-platform build is not supported" 错误，先执行：
+docker buildx create --name mybuilder --use
+
 # 1. 构建镜像
 docker-compose build
 
@@ -293,8 +296,7 @@ process-manager/
 │   └── test_guide.md             # 测试说明文档
 ├── docker-compose.yml
 ├── .gitignore
-├── README.md
-└── label-00315.md
+└── README.md
 ```
 
 ### 允许执行的命令
