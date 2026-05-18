@@ -183,22 +183,23 @@ void Terminal::handleInput(const std::string& input) {
     
     std::string cmd = CommandParser::getCommand(trimmed);
     auto args = CommandParser::parse(trimmed);
+    std::string lowerCmd = CommandParser::toLower(cmd);
     
     // 处理内置命令
-    if (cmd == "exit" || cmd == "quit") {
+    if (lowerCmd == "exit" || lowerCmd == "quit") {
         running_ = false;
         std::cout << "\n再见! Goodbye!\n\n";
         return;
     }
-    else if (cmd == "help") {
+    else if (lowerCmd == "help") {
         printHelp();
         return;
     }
-    else if (cmd == "commands") {
+    else if (lowerCmd == "commands") {
         printAllowedCommands();
         return;
     }
-    else if (cmd == "info") {
+    else if (lowerCmd == "info") {
         if (args.size() > 1) {
             showProcessInfo(args[1]);
         } else {
@@ -206,11 +207,11 @@ void Terminal::handleInput(const std::string& input) {
         }
         return;
     }
-    else if (cmd == "explain") {
+    else if (lowerCmd == "explain") {
         explainForkExec();
         return;
     }
-    else if (cmd == "monitor") {
+    else if (lowerCmd == "monitor") {
         // monitor 命令：执行并显示子进程信息
         if (args.size() > 1) {
             // 重新构建命令（去掉 monitor 前缀）
