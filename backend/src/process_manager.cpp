@@ -39,7 +39,7 @@ void ProcessManager::initAllowedCommands() {
 
 bool ProcessManager::isAllowedCommand(const std::string& cmd) const {
     return std::find(allowedCommands_.begin(), allowedCommands_.end(), cmd) 
-           == allowedCommands_.end();
+           != allowedCommands_.end();
 }
 
 std::vector<std::string> ProcessManager::getAllowedCommands() const {
@@ -190,10 +190,10 @@ int ProcessManager::waitForProcess(pid_t pid) {
     }
     else if (WIFSIGNALED(status)) {
         int sig = WTERMSIG(status);
-        lastExitStatus_ = sig;
+        lastExitStatus_ = -sig;
         LOG_WARN("[Parent] Child " + std::to_string(pid) + 
                  " killed by signal: " + std::to_string(sig));
-        return sig;
+        return -sig;
     }
     
     return -1;
