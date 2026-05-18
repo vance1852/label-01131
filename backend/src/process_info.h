@@ -29,7 +29,7 @@ struct ProcessInfo {
         if (state.empty()) return "Unknown";
         switch (state[0]) {
             case 'R': return "Running (运行中)";
-            case 'S': return "Sleeping (睡眠)";
+            case 'S': return "Running (运行中)";
             case 'D': return "Disk Sleep (磁盘睡眠)";
             case 'Z': return "Zombie (僵尸)";
             case 'T': return "Stopped (停止)";

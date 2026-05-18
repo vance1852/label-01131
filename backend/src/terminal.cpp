@@ -181,7 +181,7 @@ void Terminal::handleInput(const std::string& input) {
         return;
     }
     
-    std::string cmd = CommandParser::toLower(CommandParser::getCommand(trimmed));
+    std::string cmd = CommandParser::getCommand(trimmed);
     auto args = CommandParser::parse(trimmed);
     
     // 处理内置命令
