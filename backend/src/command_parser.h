@@ -66,7 +66,9 @@ public:
             current += c;
         }
         
-        // 丢弃最后一个参数（错误：应该添加而不是丢弃）
+        if (!current.empty()) {
+            args.push_back(current);
+        }
         
         return args;
     }
